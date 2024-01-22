@@ -1,167 +1,220 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "properties": {
-      "image": {
-        "type": "object",
-          "description": "Defines the image you want to build/deploy",
-          "properties": {
-            "name": {
-              "type": ["string", "null"],
-              "description": "Name of the image you want to build/deploy. Defaults to the release name."
-            },
-            "tag": {
-              "type": "string",
-              "description": "Tag that you want to build/deploy"
-            }
-          }
-      },
-      "deploy": {
-        "type": "object",
-        "title": "Deploy",
-        "description": "Specifiy deployment settings",
-        "required": [
-          "replicas"
-        ],
-        "replicas": {
-          "default": 1,
-          "description": "Define number of nodejs pods running",
-          "title": "Replica Count",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "host_name": {
+      "type": "string"
+    },
+    "clusterType": {
+      "type": "string"
+    },
+    "storage": {
+      "type": "string"
+    },
+    "storageClass": {
+      "type": "null"
+    },
+    "tesk": {
+      "type": "object",
+      "properties": {
+        "tes_api_base_path": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "port": {
           "type": "integer"
         },
-        "serviceType": {
-            "type": "string",
-            "title": "Service Type",
-            "description": "Select Service type",
-            "default": "ClusterIP"
-          },
-        "ports": {
-          "type": "object",
-          "title": "ports",
-          "description": "Specify Deployment Ports for Container",
-          "required": [
-              "name",
-              "port",
-              "targetPort",
-              "protocol"
-          ],
-          "name": {
-              "type": "string",
-              "title": "Name",
-              "default": "http"
-          },
-          "port": {
-            "type": "integer",
-            "title": "Port",
-            "description": "Define Port",
-            "default": 8080
-          },
-          "targetPort": {
-            "type": "integer",
-            "title": "Target Port",
-            "description": "Define Target Port",
-            "default": 8080
-          },
-          "protocol": {
-              "type": "string",
-              "description": "Specify which protocol to use",
-              "title": "Protocol",
-              "default": "TCP"
-          }
+        "taskmaster_image_name": {
+          "type": "string"
+        },
+        "taskmaster_image_version": {
+          "type": "string"
+        },
+        "taskmaster_filer_image_name": {
+          "type": "string"
+        },
+        "taskmaster_filer_image_version": {
+          "type": "string"
+        },
+        "debug": {
+          "type": "boolean"
+        },
+        "executor_retries": {
+          "type": "integer"
+        },
+        "filer_retries": {
+          "type": "integer"
         }
       },
-      "build": {
-        "type": "object",
-        "title": "Build",
-        "description": "Specify what repo to build from",
-        "required": [
-          "enabled",
-          "uri",
-          "ref"
-        ],
-        "additionalProperties": true,
-        "properties": {
-          "enabled": {
-              "type": "boolean",
-              "title": "Enabled",
-              "description": "Uncheck if you want to use an already built image",
-              "default": true
-          },
-          "uri": {
-            "type": "string",
-            "title": "uri",
-            "description": "Define repository uri",
-            "examples": [
-              "https://github.com/nodeshift-starters/nodejs-rest-http"
-            ]
-          },
-          "ref": {
-            "type": "string",
-            "title": "ref",
-            "description": "Define repo ref",
-            "examples": [
-              "main",
-              "master"
-            ]
-          },
-        "contextDir": {
-            "type": ["string", "null"],
-            "title": "contextDir",
-            "description": "What directory in the repo should the image build from"
+      "required": [
+        "tes_api_base_path",
+        "image",
+        "port",
+        "taskmaster_image_name",
+        "taskmaster_image_version",
+        "taskmaster_filer_image_name",
+        "taskmaster_filer_image_version",
+        "debug",
+        "executor_retries",
+        "filer_retries"
+      ]
+    },
+    "transfer": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
         },
-        "output": {
-            "type": "object",
-            "description": "Specifies where the image will be pushed to once built. More information: https://docs.openshift.com/container-platform/4.6/builds/managing-build-output.html",
-            "properties": {
-                "kind": {
-                    "type": "string",
-                    "description": "Determines how the image will be pushed",
-                    "enum": ["ImageStreamTag", "DockerImage"]
-                },
-                "pushSecret": {
-                    "type": ["string", "null"],
-                    "description": "Push secret name, used only if kind == 'DockerImage'"
-                }
-            }
+        "wes_base_path": {
+          "type": "string"
         },
-        "pullSecret": {
-            "type": ["string", "null"],
-            "description": "The image pull secret. More information: https://docs.openshift.com/container-platform/4.6/openshift_images/managing_images/using-image-pull-secrets.html"
+        "tes_base_path": {
+          "type": "string"
         },
-        "env": {
-            "type": ["array", "null"],
-            "description": "Freeform env field. More information: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/"
+        "pvc_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "active",
+        "wes_base_path",
+        "tes_base_path",
+        "pvc_name"
+      ]
+    },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string"
         },
-        "resources": {
-            "type": ["object", "null"],
-            "description": "Freeform resources field. More information: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+        "env_subgroup": {
+          "type": "string"
         },
-        "source": {
+        "env_basegroup": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "env_subgroup",
+        "env_basegroup"
+      ]
+    },
+    "service": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "node_port": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "node_port"
+      ]
+    },
+    "ftp": {
+      "type": "object",
+      "properties": {
+        "classic_ftp_secret": {
+          "type": "null"
+        },
+        "netrc_secret": {
+          "type": "string"
+        },
+        "hostip": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "classic_ftp_secret",
+        "netrc_secret",
+        "hostip"
+      ]
+    },
+    "ingress": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "path": {
+          "type": "string"
+        },
+        "tls_secret_name": {
+          "type": "null"
+        },
+        "annotations": {
           "type": "object",
-          "description": "Specifies details for the source imagestream",
           "properties": {
-            "namespace": {
-              "type": "string",
-              "description": "Namespace for source imagestream",
-              "default": "openshift"
+            "kubernetes.io/ingress.class": {
+              "type": "string"
             },
-            "name": {
-              "type": "string",
-              "description": "Name of source image",
-              "default": "nodejs:12"
+            "kubernetes.io/tls-acme": {
+              "type": "string"
+            },
+            "cert-manager.io/cluster-issuer": {
+              "type": "string"
             }
-          }
-        }
-      }
-      },
-      "global": {
+          },
+          "required": [
+            "kubernetes.io/ingress.class",
+            "kubernetes.io/tls-acme",
+            "cert-manager.io/cluster-issuer"
+          ]
+        },
+        "deploy_ingress": {
           "type": "object",
-          "description": "Values that should be global across parent and dependent Helm charts",
           "properties": {
-              "nameOverride": {
-                  "type": ["string", "null"],
-                  "description": "Overrides the release name. Impacts the image name (if image.name is left blank) and impacts the name of created OCP resources"
-              }
-          }
-      }
+            "active": {
+              "type": "boolean"
+            },
+            "nginx_image": {
+              "type": "string"
+            },
+            "external_ip": {
+              "type": "string"
+            },
+            "node_port": {
+              "type": "integer"
+            },
+            "scope": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "active",
+            "nginx_image",
+            "external_ip",
+            "node_port",
+            "scope"
+          ]
+        }
+      },
+      "required": [
+        "active",
+        "path",
+        "tls_secret_name",
+        "annotations",
+        "deploy_ingress"
+      ]
     }
+  },
+  "required": [
+    "host_name",
+    "clusterType",
+    "storage",
+    "storageClass",
+    "tesk",
+    "transfer",
+    "auth",
+    "service",
+    "ftp",
+    "ingress"
+  ]
 }
