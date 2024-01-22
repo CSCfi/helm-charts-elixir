@@ -3,6 +3,16 @@ entries:
   tesk:
   - apiVersion: v2
     appVersion: dev
+    created: "2024-01-22T14:13:25.280213681Z"
+    description: A TESK-EXILIR Helm chart for Kubernetes
+    digest: 442ec653e0580bc917b5a2438f8c70f88fc63bcb7755947def322071a73dc4fb
+    name: tesk
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/tesk-0.1.2/tesk-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: dev
     created: "2024-01-22T14:02:39.526481344Z"
     description: A TESK-EXILIR Helm chart for Kubernetes
     digest: d4c4fe7b40c385debd16ec4f92d219414c07a03e9a6cbdb91150cf7d6c5010d9
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/tesk-0.1.0/tesk-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-22T14:02:39.526493744Z"
+generated: "2024-01-22T14:13:25.280231294Z"
