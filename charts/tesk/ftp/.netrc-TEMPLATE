@@ -1,0 +1,4 @@
+# Template
+machine ftp-private.ebi.ac.uk
+login ftp-username
+password ftp-password
