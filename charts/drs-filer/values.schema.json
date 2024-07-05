@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "clusterType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "host_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "drs_filer": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appName": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "image",
+        "appName"
+      ]
+    },
+    "apiServer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mongodb": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string",
+          "minLength": 1
+        },
+        "volumeSize": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "image",
+        "volumeSize"
+      ]
+    }
+  },
+  "required": [
+    "clusterType",
+    "host_name",
+    "drs_filer",
+    "apiServer",
+    "mongodb"
+  ]
+}
