@@ -1,0 +1,128 @@
+
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "applicationDomain": {
+      "type": "string"
+    },
+    "clusterType": {
+      "type": "string"
+    },
+    "flower": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "basicAuth": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "basicAuth",
+        "image"
+      ]
+    },
+    "prowes": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "image"
+      ]
+    },
+    "celeryWorker": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "image"
+      ]
+    },
+    "mongodb": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "databaseAdminPassword": {
+          "type": "string"
+        },
+        "databaseName": {
+          "type": "string"
+        },
+        "databasePassword": {
+          "type": "string"
+        },
+        "databaseUser": {
+          "type": "string"
+        },
+        "volumeSize": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "databaseAdminPassword",
+        "databaseName",
+        "databasePassword",
+        "databaseUser",
+        "volumeSize",
+        "image"
+      ]
+    },
+    "rabbitmq": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "volumeSize": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "appName",
+        "volumeSize",
+        "image"
+      ]
+    }
+  },
+  "required": [
+    "applicationDomain",
+    "clusterType",
+    "flower",
+    "prowes",
+    "celeryWorker",
+    "mongodb",
+    "rabbitmq"
+  ]
+}
+
+
