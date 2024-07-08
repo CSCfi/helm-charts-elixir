@@ -51,8 +51,7 @@ jobs:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - name: Copy Index 
         run: |
-          test -f .cr-index/index.yaml && cp .cr-index/index.yaml .
-
+          cp .cr-index/index.yaml . || echo "No index.yaml was update, continuing." 
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
