@@ -2,6 +2,10 @@
 
 Helm chart repository for Elixir
 
-* [TESK](README-tesk.html)
-* [WES](README-wes.html)
-* [DRS](README-drs.html)
+* [TESK](charts/tesk/)
+* [WES](charts/wes/)
+* [DRS filer](charts/drs-filer/)
+* [TRS filer](charts/trs-filer/)
+* [proWES](charts/proWES/)
+* [proTES](charts/proTES/)
+* [Cloud registry](charts/cloud-registry/)
