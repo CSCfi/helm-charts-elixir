@@ -52,4 +52,5 @@ jobs:
 
       - name: Debug list
         run: |
-          ls -alh -R
+          ls -alh 
+          ls -alh .cr-index 
