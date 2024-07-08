@@ -9,3 +9,5 @@ Helm chart repository for Elixir
 * [proWES](charts/proWES/)
 * [proTES](charts/proTES/)
 * [Cloud registry](charts/cloud-registry/)
+
+<https://github.com/CSCfi/helm-charts-elixir/>
