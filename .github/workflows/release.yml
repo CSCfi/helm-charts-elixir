@@ -52,4 +52,4 @@ jobs:
 
       - name: Debug list
         run: |
-          ls -alh
+          ls -alh -R
