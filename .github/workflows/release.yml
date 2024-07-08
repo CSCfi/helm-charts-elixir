@@ -52,7 +52,8 @@ jobs:
       - name: Copy Index 
         run: |
           test -f .cr-index/index.yaml && cp .cr-index/index.yaml .
-      - name: name: Setup Pages
+
+      - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
