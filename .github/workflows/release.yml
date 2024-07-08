@@ -7,7 +7,7 @@ on:
       - test-gha
 
 permissions:
-  contents: write:w
+  contents: write
   pages: write
   id-token: write
 
