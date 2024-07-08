@@ -63,7 +63,7 @@ jobs:
       - name: Copy index.yaml and READMEs 
         run: |
           cp .cr-index/index.yaml . || echo "No index.yaml was updated, continuing."
-          find charts -name README.md | awk -F/ '{print "cp "$0" README-"$2".md"}'
+          find charts -name README.md | awk -F/ '{print "cp "$0" README-"$2".md"}' | bash -s
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
