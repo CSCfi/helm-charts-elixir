@@ -6,6 +6,17 @@ on:
       - main
       - test-gha
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -49,9 +60,9 @@ jobs:
           skip_upload: true
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Copy Index 
+      - name: Copy index.yaml 
         run: |
-          cp .cr-index/index.yaml . || echo "No index.yaml was update, continuing." 
+          cp .cr-index/index.yaml . || echo "No index.yaml was updated, continuing." 
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
