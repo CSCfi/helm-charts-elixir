@@ -83,6 +83,17 @@ entries:
   prowes:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-08T13:17:02.087575195Z"
+    description: A proWES Helm chart for Kubernetes
+    digest: 0d0efcd4e2fc77e4b984bb499d048ee016b134b5743d1076070791544a89cdb8
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: prowes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/prowes-0.1.1/prowes-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-08T11:26:52.808533222Z"
     description: A proWES Helm chart for Kubernetes
     digest: 233e19af672eb0d78040f34fd00f5875280af4bdfdf3b7f10de9cd94b7c96e70
@@ -129,4 +140,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-08T13:02:06.723159455Z"
+generated: "2024-07-08T13:17:02.087600582Z"
