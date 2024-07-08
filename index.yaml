@@ -1,5 +1,28 @@
 apiVersion: v1
 entries:
+  cloud-registry:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-08T11:26:52.409488889Z"
+    description: A Helm chart for Kubernetes
+    digest: a8dabe5c06750649660056863ac297725a97757eafd70a0b18eac0da8fd65524
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: cloud-registry
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/cloud-registry-0.1.0/cloud-registry-0.1.0.tgz
+    version: 0.1.0
+  cwlwes:
+  - apiVersion: v2
+    created: "2024-07-08T11:26:52.504973452Z"
+    description: A cwl-WES Helm chart for Kubernetes
+    digest: 61102920f9e1cecfa8a2884ba758f7a5b4b28bfcedd6386a465f481262588327
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: cwlwes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/cwlwes-0.1.0/cwlwes-0.1.0.tgz
+    version: 0.1.0
   drs-filer:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -12,6 +35,44 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/drs-filer-0.1.1/drs-filer-0.1.1.tgz
     version: 0.1.1
+  protes:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-08T11:26:52.701605625Z"
+    description: A proTES Helm chart for Kubernetes
+    digest: a2faaf4a6224dc076597290303bda646de1bf16194a37eaf7cb618531f0a4099
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: protes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/protes-0.1.0/protes-0.1.0.tgz
+    version: 0.1.0
+  prowes:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-08T11:26:52.808533222Z"
+    description: A proWES Helm chart for Kubernetes
+    digest: 233e19af672eb0d78040f34fd00f5875280af4bdfdf3b7f10de9cd94b7c96e70
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: prowes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/prowes-0.1.0/prowes-0.1.0.tgz
+    version: 0.1.0
+  tesk:
+  - apiVersion: v2
+    appVersion: dev
+    created: "2024-07-08T11:26:52.909569226Z"
+    description: A TESK-EXILIR Helm chart for Kubernetes
+    digest: 0856ee00d8ff1f483770a937b6eaf1a427afcd835b564aed8e782f0f1eefce2f
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: tesk
+    sources:
+    - https://github.com/elixir-cloud-aai/TESK/
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/tesk-0.1.0/tesk-0.1.0.tgz
+    version: 0.1.0
   trs-filer:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -35,4 +96,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-08T11:05:11.24141065Z"
+generated: "2024-07-08T11:26:53.010344861Z"
