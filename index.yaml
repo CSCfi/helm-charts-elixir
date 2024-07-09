@@ -3,6 +3,17 @@ entries:
   cloud-registry:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-09T11:35:40.648321351Z"
+    description: A Helm chart for Kubernetes
+    digest: 95099271f3c213c367d91ec2139ef3dfca135cd95dfff127358b719cbf5b9601
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: cloud-registry
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/cloud-registry-0.1.3/cloud-registry-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-08T13:02:06.723131883Z"
     description: A Helm chart for Kubernetes
     digest: 2785421cebfb7518a48e634d13ed4bb4cea3a85d25f101296cbeb4f8cbb6dfda
@@ -142,6 +153,17 @@ entries:
   trs-filer:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-09T11:35:40.766519889Z"
+    description: A Helm chart for Kubernetes
+    digest: a4944945d1b509b97cd020aff9be51cd00fcaf5bfb8f08ee6a19d12cc47bd057
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: trs-filer
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.3/trs-filer-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-09T05:08:44.483597588Z"
     description: A Helm chart for Kubernetes
     digest: c0da29394c9c5d04e00aa1f250412d5ab86eeede8ff04f3738ad0f8a09716c76
@@ -173,4 +195,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-09T08:45:43.801310862Z"
+generated: "2024-07-09T11:35:40.766576053Z"
