@@ -3,7 +3,7 @@ data:
   config.yaml: '# Empty, this configMap will be filled by Job (configmap-job-{{ .Values.drs_filer.appName }})'
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: app-config-{{ .Values.drs_filer.appName }}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -21,7 +21,7 @@ spec:
         - name: APISERVER
           value: {{ .Values.apiServer }}
         - name: CONFIG_MAP_NAME
-          value: app-config
+          value: app-config-{{ .Values.drs_filer.appName }}
         - name: APP_CONFIG_PATH
           value: /app/drs_filer/config.yaml
         - name: APP_NAME

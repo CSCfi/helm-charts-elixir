@@ -91,7 +91,7 @@ spec:
           subPath: .netrc
           name: wes-netrc-secret
         - mountPath: {{ .Values.extra_config.folder}}
-          name: app-config
+          name: app-config-{{ .Values.wes.appName }}
       volumes:
       - name: wes-volume
         persistentVolumeClaim:
@@ -105,6 +105,6 @@ spec:
             path: .netrc
       - configMap:
           defaultMode: 420
-          name: app-config
-        name: app-config
+          name: app-config-{{ .Values.wes.appName }}
+        name: app-config-{{ .Values.wes.appName }}
 

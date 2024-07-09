@@ -3,4 +3,4 @@ data:
   app_config.yaml: {{ .Values.wes.appConfig | quote }}
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: app-config-{{ .Values.wes.appName }}

@@ -15,7 +15,7 @@ spec:
         - name: APISERVER
           value: {{ .Values.autocert.apiServer }}
         - name: CONFIG_MAP_NAME
-          value: app-config
+          value: app-config-{{ .Values.wes.appName }}
         - name: APP_CONFIG_PATH
           value: /app/cwl_wes/config/app_config.yaml
         - name: WES_APP_NAME
