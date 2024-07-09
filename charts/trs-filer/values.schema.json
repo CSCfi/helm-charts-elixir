@@ -1,0 +1,54 @@
+
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "clusterType": {
+      "type": "string"
+    },
+    "host_name": {
+      "type": "string"
+    },
+    "trs_filer": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "appName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "image",
+        "appName"
+      ]
+    },
+    "apiServer": {
+      "type": "string"
+    },
+    "mongodb": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "type": "string"
+        },
+        "volumeSize": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "image",
+        "volumeSize"
+      ]
+    }
+  },
+  "required": [
+    "clusterType",
+    "host_name",
+    "trs_filer",
+    "apiServer",
+    "mongodb"
+  ]
+}
