@@ -1,13 +1,10 @@
 # Default values for drs-filer.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-clusterType: openshift
-
 host_name: drs-filer-test.2.rahtiapp.fi
 
 drs_filer:
-  image: lvarin/drs-filer:latest
+  image: elixircloud/drs-filer:latest
   appName: drs-filer
 
 apiServer: kubernetes.default.svc:443 # address of k8s API server

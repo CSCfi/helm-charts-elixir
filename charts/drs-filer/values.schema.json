@@ -3,10 +3,6 @@
   "description": "",
   "type": "object",
   "properties": {
-    "clusterType": {
-      "type": "string",
-      "minLength": 1
-    },
     "host_name": {
       "type": "string",
       "minLength": 1
@@ -51,7 +47,6 @@
     }
   },
   "required": [
-    "clusterType",
     "host_name",
     "drs_filer",
     "apiServer",
