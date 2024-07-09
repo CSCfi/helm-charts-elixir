@@ -4,7 +4,7 @@
 
 clusterType: openshift
 
-host_name: trs-filer-test.c03.k8s-popup.csc.fi
+host_name: trs-filer-test.2.rahiapp.fi
 
 trs_filer:
   image: lvarin/trs-filer:0.1.0
