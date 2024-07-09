@@ -1,4 +1,4 @@
-{{- if eq .Values.clusterType "openshift" }}
+{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 {{- else }}
@@ -10,7 +10,7 @@ metadata:
     app: {{ .Values.protes.appName }}
   name: {{ .Values.protes.appName }}
 spec:
-{{- if eq .Values.clusterType "openshift" }}
+{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
   host: {{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
   path: "/ga4gh/tes/v1"
   port:

@@ -7,9 +7,6 @@
     "applicationDomain": {
       "type": "string"
     },
-    "clusterType": {
-      "type": "string"
-    },
     "flower": {
       "type": "object",
       "properties": {
@@ -116,7 +113,6 @@
   },
   "required": [
     "applicationDomain",
-    "clusterType",
     "flower",
     "protes",
     "celeryWorker",

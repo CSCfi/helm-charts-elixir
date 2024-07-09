@@ -43,10 +43,6 @@ cd proTES/deployment
 vim values.yaml
 ```
 
-NOTE: update the variable clusterType in values.yaml depending on your target cluster:
-  - For OpenShift clusters set the value to: `openshift`
-  - For plain Kubernetes clusters set the value to: `kubernetes`
-
 ### Using the Helm CLI
 
 Optionally, for CI/CD use cases for example, you could override the values in 

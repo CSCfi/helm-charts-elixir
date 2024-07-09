@@ -1,4 +1,4 @@
-{{- if eq .Values.clusterType "openshift" }}
+{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 {{- else }}
@@ -10,7 +10,7 @@ metadata:
     app: {{ .Values.flower.appName }}
   name: {{ .Values.flower.appName }}
 spec:
-{{- if eq .Values.clusterType "openshift" }}
+{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
   host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
   port:
     targetPort: 5555

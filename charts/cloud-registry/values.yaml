@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-host_name: cloud-registry.rahtiapp.fi
+host_name: cloud-registry-test.2.rahtiapp.fi
 
 cloud_registry:
   image: elixircloud/cloud-registry:0.1.0

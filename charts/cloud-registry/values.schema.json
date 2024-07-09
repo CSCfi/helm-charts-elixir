@@ -4,9 +4,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "clusterType": {
-      "type": "string"
-    },
     "host_name": {
       "type": "string"
     },
@@ -45,7 +42,6 @@
     }
   },
   "required": [
-    "clusterType",
     "host_name",
     "cloud_registry",
     "apiServer",
