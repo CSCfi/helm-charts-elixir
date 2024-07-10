@@ -69,6 +69,16 @@ entries:
     version: 0.1.0
   cwlwes:
   - apiVersion: v2
+    created: "2024-07-10T12:13:47.907649274Z"
+    description: A cwl-WES Helm chart for Kubernetes
+    digest: cfd7d15e97e773ed6f6b1ba65358a8c5571675120e20e7e7d79f07f6afe0fa1e
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: cwlwes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/cwlwes-0.1.5/cwlwes-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     created: "2024-07-10T11:52:21.878658923Z"
     description: A cwl-WES Helm chart for Kubernetes
     digest: e52896897745a39d98cf91a13cdea70f23b375a70243b2d7574eb16db0953fa9
@@ -167,6 +177,17 @@ entries:
   protes:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-10T12:13:48.077250336Z"
+    description: A proTES Helm chart for Kubernetes
+    digest: 827572608fd8bfc6605c5b11d91a56fe4bc98c9af8d942e1cd2206906e0c996d
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: protes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/protes-0.1.8/protes-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-10T11:52:22.052806037Z"
     description: A proTES Helm chart for Kubernetes
     digest: 0931198c0a2ae936f25a34421def21e16f90ea71a068d959217be0086815a47b
@@ -254,6 +275,17 @@ entries:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/protes-0.1.0/protes-0.1.0.tgz
     version: 0.1.0
   prowes:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-10T12:13:48.235391113Z"
+    description: A proWES Helm chart for Kubernetes
+    digest: de9582875b24f08c0f483f040867919db94124e7b1b71023b4519aa9e31b43b2
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: prowes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/prowes-0.1.9/prowes-0.1.9.tgz
+    version: 0.1.9
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-07-10T11:52:22.23661362Z"
@@ -423,4 +455,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-10T11:52:22.236739766Z"
+generated: "2024-07-10T12:13:48.235525434Z"
