@@ -150,7 +150,7 @@ wes:
   # Activate/deactivate the '/' to '/ga4gh/wes/v1/ui/' redirection
 
 celeryWorker:
-  appName: celery-worker
+  appName: celery-worker-{{ .Values.wes.appName }}
   image: elixircloud/cwl-wes:latest
   tmpVolumeSize: 0Gi # Volume size for the /tmp directory. Leave 0 to not deploy. StorageClass with readWriteMany capability is required
   tmpCleaner: false # If tmpVolume is deployed, then it should be cleaned hourly.
