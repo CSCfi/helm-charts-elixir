@@ -23,4 +23,4 @@ spec:
       volumes:
       - name: rabbitmq-volume
         persistentVolumeClaim:
-          claimName: {{ .Values.rabbitmq.appName }}-volume
+          claimName: {{ .Values.rabbitmq.appName }}-volume-{{ .Volumes.prowes.appName }}

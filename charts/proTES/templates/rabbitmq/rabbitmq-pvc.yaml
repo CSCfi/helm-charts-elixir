@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ .Values.rabbitmq.appName }}-volume
+  name: {{ .Values.rabbitmq.appName }}-volume-{{ .Volumes.protes.appName }}
 spec:
   accessModes:
     - ReadWriteMany
