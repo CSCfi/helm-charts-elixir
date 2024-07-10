@@ -3,5 +3,5 @@ name: prowes
 description: A proWES Helm chart for Kubernetes
 icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
 type: application
-version: 0.1.2
+version: 0.1.3
 appVersion: 1.16.0

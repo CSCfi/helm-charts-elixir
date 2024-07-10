@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.mongodb.appName }}
+  name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
   labels:
-    app: {{ .Values.mongodb.appName }}
+    app: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.mongodb.appName }}
+      app: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.mongodb.appName }}
+        app: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
     spec:
       containers:
         - env:
@@ -20,22 +20,22 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: database-user
-                name: {{ .Values.mongodb.appName }}
+                name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
           - name: MONGODB_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: database-password
-                name: {{ .Values.mongodb.appName }}
+                name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
           - name: MONGODB_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
                 key: database-admin-password
-                name: {{ .Values.mongodb.appName }}
+                name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
           - name: MONGODB_DATABASE
             valueFrom:
               secretKeyRef:
                 key: database-name
-                name: {{ .Values.mongodb.appName }}
+                name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
           image: {{ .Values.mongodb.image }}
           imagePullPolicy: IfNotPresent
           livenessProbe:
@@ -69,8 +69,8 @@ spec:
               memory: 512Mi
           volumeMounts:
             - mountPath: /var/lib/mongodb/data
-              name: mongodb-data
+              name: mongodb-data-{{ .Values.protes.appName }}
       volumes:
-        - name: mongodb-data
+        - name: mongodb-data-{{ .Values.protes.appName }}
           persistentVolumeClaim:
-            claimName: {{ .Values.mongodb.appName }}-volume
+            claimName: {{ .Values.mongodb.appName }}-volume-{{ .Values.protes.appName }}

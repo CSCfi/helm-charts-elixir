@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb
+  name: mongodb-{{ .Values.cloud_registry.appName }}
 spec:
   accessModes:
   - ReadWriteOnce
