@@ -20,7 +20,7 @@ spec:
         - mountPath: /data
           name: wes-volume
       containers:
-      - name: celery-worker
+      - name: celery-worker-{{ .Values.wes.appName }}
         image: {{ .Values.celeryWorker.image }}
         imagePullPolicy: Always
         workingDir: '/app/cwl_wes'

@@ -20,7 +20,7 @@ spec:
         - mountPath: /data
           name: prowes-volume
       containers:
-      - name: celery-worker
+      - name: celery-worker-{{ .Values.prowes.appName }}
         image: {{ .Values.celeryWorker.image }}
         imagePullPolicy: Always
         workingDir: '/app/pro_wes'

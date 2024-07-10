@@ -20,7 +20,7 @@ spec:
               - key: app
                 operator: In
                 values:
-                - celery-worker
+                - celery-worker-{{ .Values.wes.appName }}
             topologyKey: "kubernetes.io/hostname"
       initContainers:
       - name: vol-init
