@@ -70,6 +70,17 @@ entries:
   drs-filer:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-10T05:58:03.538064295Z"
+    description: A DRS filer Helm chart for Kubernetes
+    digest: a35b680df78f8d45405cc74ba71c5e48f5ebf445e4e046cf7b9a114f6dc91df3
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: drs-filer
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/drs-filer-0.1.4/drs-filer-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-09T08:45:43.801275506Z"
     description: A DRS filer Helm chart for Kubernetes
     digest: 9954c6ab1f2ffa5e54c2caae0c5cfc236ad8d3296ded6122f70cec65226b7914
@@ -228,4 +239,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-09T12:34:42.003644022Z"
+generated: "2024-07-10T05:58:03.653854084Z"
