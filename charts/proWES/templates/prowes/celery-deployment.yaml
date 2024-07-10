@@ -47,7 +47,7 @@ spec:
               key: database-name
               name: {{ .Values.mongodb.appName }}-{{ .Values.prowes.appName }}
         - name: RABBIT_HOST
-          value: {{ .Values.rabbitmq.appName }}
+          value: {{ .Values.rabbitmq.appName }}-{{ .Values.prowes.appName }}
         - name: RABBIT_PORT
           value: "5672"
         resources:

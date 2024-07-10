@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.rabbitmq.appName }}
+  name: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
   labels:
-    app: {{ .Values.rabbitmq.appName }}
+    app: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.rabbitmq.appName }}
+      app: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.rabbitmq.appName }}
+        app: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
     spec:
       containers:
       - name: rabbitmq
@@ -23,5 +23,5 @@ spec:
       volumes:
       - name: rabbitmq-volume
         persistentVolumeClaim:
-          claimName: {{ .Values.rabbitmq.appName }}-volume-{{ .Volumes.prowes.appName }}
+          claimName: {{ .Values.rabbitmq.appName }}-volume-{{ .Values.wes.appName }}
 
