@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Values.flower.appName }}
+  name: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
 spec:
   selector:
-    app: {{ .Values.flower.appName }}
+    app: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
   ports:
   - port: 5555
     targetPort: 5555

@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {{ .Values.flower.appName }}
-  name: {{ .Values.flower.appName }}
+    app: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
+  name: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.flower.appName }}
+      app: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.flower.appName }}
+        app: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
     spec:
       containers:
       - image: {{ .Values.flower.image }}
