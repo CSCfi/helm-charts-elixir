@@ -7,18 +7,18 @@ kind: Ingress
 {{ end }}
 metadata:
   labels:
-    app: {{ .Values.flower.appName }}
-  name: {{ .Values.flower.appName }}
+    app: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
+  name: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
 spec:
 {{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
-  host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
+  host: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
   port:
     targetPort: 5555
   tls:
     termination: edge
   to:
     kind: Service
-    name: {{ .Values.flower.appName }}
+    name: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
     weight: 100
   wildcardPolicy: None
 status:
@@ -26,13 +26,13 @@ status:
 {{- else }}
   tls:
   - hosts:
-      - {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
+      - {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
   rules:
-  - host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
+  - host: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
     http:
       paths:
       - path: "/"
         backend:
-          serviceName: {{ .Values.flower.appName }}
+          serviceName: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
           servicePort: 5555
 {{ end }}
