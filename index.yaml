@@ -478,6 +478,17 @@ entries:
   trs-filer:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-12T08:53:14.023082737Z"
+    description: A Helm chart for Kubernetes
+    digest: eadc7bd878f79f58eb7a2252f4e6881a681f289a204861cab32f4e55744f8e4c
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: trs-filer
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.5/trs-filer-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-10T08:01:07.367593883Z"
     description: A Helm chart for Kubernetes
     digest: 91ccf9aa806c4b697d6da33052ca016aff35c3951b331ddfbea682e9d03a5f2a
@@ -531,4 +542,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-12T07:49:53.255132827Z"
+generated: "2024-07-12T08:53:14.023176213Z"
