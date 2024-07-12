@@ -73,4 +73,4 @@ spec:
       volumes:
         - name: mongodb-data
           persistentVolumeClaim:
-            claimName: {{ .Values.mongodb.appName }}-volume
+            claimName: {{ .Values.mongodb.appName }}-volume-{{ .Values.prowes.appName }}
