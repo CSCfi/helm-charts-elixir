@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 # host_name: tes.tsi.ebi.ac.uk
-host_name: "csc-tesk-noauth2.rahtiapp.fi"
+host_name: "tesk-test.2.rahtiapp.fi"
 # There are two options here: "openshift" or "kubernetes"
 clusterType: openshift
 #
