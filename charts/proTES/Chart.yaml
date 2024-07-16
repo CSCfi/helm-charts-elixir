@@ -3,5 +3,5 @@ name: protes
 description: A proTES Helm chart for Kubernetes
 icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
 type: application
-version: 0.1.10
+version: 0.1.11
 appVersion: 1.16.0

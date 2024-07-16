@@ -14,7 +14,7 @@ prowes:
   image: elixircloud/prowes:latest
 
 celeryWorker:
-  appName: celery-worker-{{ .Values.prowes.appName }}
+  appName: celery-worker
   image: elixircloud/prowes:latest
 
 mongodb:

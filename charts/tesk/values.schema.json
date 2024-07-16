@@ -132,9 +132,7 @@
         }
       },
       "required": [
-        "classic_ftp_secret",
-        "netrc_secret",
-        "hostip"
+        "netrc_secret"
       ]
     },
     "ingress": {
@@ -199,7 +197,6 @@
       "required": [
         "active",
         "path",
-        "tls_secret_name",
         "annotations",
         "deploy_ingress"
       ]
@@ -209,7 +206,6 @@
     "host_name",
     "clusterType",
     "storage",
-    "storageClass",
     "tesk",
     "transfer",
     "auth",

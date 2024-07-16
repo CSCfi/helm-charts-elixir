@@ -14,7 +14,7 @@ protes:
   image: elixircloud/protes:latest
 
 celeryWorker:
-  appName: celery-worker-{{ .Values.protes.appName }}
+  appName: celery-worker
   image: elixircloud/protes:latest
 
 mongodb:

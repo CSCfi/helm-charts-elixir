@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.celeryWorker.appName }}
+  name: {{ .Values.celeryWorker.appName }}-{{ .Values.wes.appName }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.celeryWorker.appName }}
+      app: {{ .Values.celeryWorker.appName }}-{{ .Values.wes.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.celeryWorker.appName }}
+        app: {{ .Values.celeryWorker.appName }}-{{ .Values.wes.appName }}
     spec:
       initContainers:
       - name: vol-init
