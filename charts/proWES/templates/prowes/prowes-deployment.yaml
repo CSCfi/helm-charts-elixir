@@ -68,6 +68,16 @@ spec:
         volumeMounts:
         - mountPath: /data
           name: prowes-volume
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - celery-worker-{{ .Values.prowes.appName }}
+            topologyKey: kubernetes.io/hostname
       volumes:
       - name: prowes-volume
         persistentVolumeClaim:
