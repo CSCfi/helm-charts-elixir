@@ -1,0 +1,10 @@
+apiVersion: helm.openshift.io/v1beta1
+kind: ProjectHelmChartRepository
+metadata:
+  name: csc-elixir
+  description: CSC-ELIXIR-Helm-Charts
+spec:
+ # optional name that might be used by console
+  name: CSC ELIXIR helm charts
+  connectionConfig:
+    url: https://cscfi.github.io/helm-charts-elixir/
