@@ -5,7 +5,7 @@
 host_name: cloud-registry-test.2.rahtiapp.fi
 
 cloud_registry:
-  image: elixircloud/cloud-registry:0.1.0
+  image: elixircloud/cloud-registry:20240716
   appName: cloud-registry
 
 apiServer: kubernetes.default.svc:443 # address of k8s API server
