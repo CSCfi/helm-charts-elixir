@@ -17,9 +17,15 @@ spec:
         - name: CONFIG_MAP_NAME
           value: app-config-{{ .Values.wes.appName }}
         - name: APP_CONFIG_PATH
-          value: /app/cwl_wes/config/app_config.yaml
+          value: /app/cwl_wes/config.yaml
         - name: WES_APP_NAME
           value: {{ .Values.wes.appName }}
+        - name: CELERY_APP_NAME
+          value: {{ .Values.celeryWorker.appName }}
+        - name: MONGO_HOST
+          value: {{ .Values.mongodb.appName}}-{{ .Values.wes.appName }}
+        - name: RABBIT_HOST
+          value: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
       restartPolicy: Never
       serviceAccountName: {{ .Values.wes.appName }}-autoadmin
 status: {}

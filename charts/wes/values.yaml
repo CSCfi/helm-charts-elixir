@@ -34,7 +34,7 @@ wes:
   storageClass: nfs-client  # <- wes-volume.yaml, only for K8S, a storageClass with readWriteMany capability is required
   volumeSize: 1Gi
   redirect: false
-  configWithJob: false
+  configWithJob: true
   appConfig: |
     # General server/service settings
     #
