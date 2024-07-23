@@ -19,16 +19,6 @@
         "openstack"
       ]
     },
-    "if": {
-      "properties": {
-        "storage": { "const": "s3" }
-      }
-    },
-    "then": {
-      "required": [
-        "s3"
-      ]
-    },
     "s3": {
       "type": "object",
       "properties": {
