@@ -13,6 +13,9 @@ clusterType: openshift
 # 'openstack' or 's3'
 storage: s3
 
+s3:
+  endpoint_url: "https://a3s.fi"
+
 # Configurable storage class. 
 storageClass: 
 

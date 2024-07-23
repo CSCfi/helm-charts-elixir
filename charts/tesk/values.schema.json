@@ -6,10 +6,42 @@
       "type": "string"
     },
     "clusterType": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "openshift",
+        "kubernetes"
+      ]
     },
     "storage": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "s3",
+        "openstack"
+      ]
+    },
+    "if": {
+      "properties": {
+        "storage": { "const": "s3" }
+      }
+    },
+    "then": {
+      "required": [
+        "s3"
+      ]
+    },
+    "s3": {
+      "type": "object",
+      "properties": {
+        "endpoint_url": {
+          "type": "string"
+        },
+        "aws_access_key_id": {
+           "type": "string"
+        },
+        "aws_secret_access_key": {
+           "type": "string"
+        }
+      }
     },
     "storageClass": {
       "type": "null"
