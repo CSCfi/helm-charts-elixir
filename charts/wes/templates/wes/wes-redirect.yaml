@@ -1,4 +1,4 @@
-{{ if and (eq .Values.wes.redirect true) (eq .Values.clusterType "openshift") }}
+{{ if eq .Values.wes.redirect true }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -97,6 +97,7 @@ status:
 
 ---
 
+{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -116,5 +117,32 @@ spec:
   wildcardPolicy: None
 status:
   ingress: []
-
+{{ else }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: {{ .Values.ingress.tls_letsencrypt.annotations.ingressclass }}
+    kubernetes.io/tls-acme: {{ .Values.ingress.tls_letsencrypt.annotations.tlsacme }}
+  name: {{ .Values.wes.appName }}-ingress
+spec:
+  rules:
+  - host: {{ .Values.host_name }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Values.wes.appName }}
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+{{ if ne .Values.tlsSecret "" }}
+  tls:
+  - hosts:
+    - {{ .Values.wes.appName }}-{{ .Values.applicationDomain }}
+    secretName: {{ .Values.wes.appName }}-ingress-secret
+{{ end }}
+{{ end }}
 {{ end }}

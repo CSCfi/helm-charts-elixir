@@ -1,5 +1,5 @@
 ---
-{{ if ne .Values.clusterType "kubernetes" }} # assume OpenShift, for k8s is wes-ingress-kubernetes.yaml
+{{ if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -14,14 +14,14 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
     termination: edge
   path: "/ga4gh/wes/v1"
-status: 
+status:
   ingress: []
 {{ end }}
 
 ### Autocert-bot
 {{ if eq .Values.autocert.createJob "true" }} # Create autocert system
 
-{{ if eq .Values.clusterType "openshift" }}
+{{ if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -58,11 +58,7 @@ status:
   loadBalancer: {}
 
 ---
-{{ if ne .Values.clusterType "kubernetes" }}
-apiVersion: batch/v1beta1
-{{ else }}
 apiVersion: batch/v1
-{{ end }}
 kind: CronJob
 metadata:
   name: {{ .Values.wes.appName }}-certbot
@@ -87,7 +83,7 @@ spec:
             - name: TESTCERT
               value: "--test-cert"
             {{- end }}
-            {{- if eq .Values.clusterType "openshift" }}
+            {{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
             - name: ROUTE
               value: {{ .Values.wes.appName }}
             {{- end }}
@@ -123,7 +119,7 @@ spec:
         - name: TESTCERT
           value: "--test-cert"
         {{- end }}
-        {{- if eq .Values.clusterType "openshift" }}
+        {{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
         - name: ROUTE
           value: {{ .Values.wes.appName }}
         {{- end }}

@@ -36,7 +36,7 @@
           "type": "string"
         },
         "testCert": {
-          "type": "string"
+          "type": "boolean"
         },
         "image": {
           "type": "string"
@@ -225,7 +225,7 @@
       "type": "object",
       "properties": {
         "letsencryptSystem": {
-          "type": "string"
+          "type": "boolean"
         },
         "nginx_image": {
           "type": "string"
@@ -240,7 +240,7 @@
                   "type": "string"
                 },
                 "tlsacme": {
-                  "type": "string"
+                  "type": "boolean"
                 },
                 "clusterissuer": {
                   "type": "string"

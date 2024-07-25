@@ -14,7 +14,7 @@ spec:
       labels:
         app: {{ .Values.mongodb.appName }}-{{ .Values.wes.appName }}
     spec:
-      {{ if eq .Values.clusterType "kubernetes" }}
+      {{ if eq .Values.mongodb.innitVolumePermissions true }}
       initContainers:
         - name: volume-permissions
           image: busybox
@@ -79,7 +79,7 @@ spec:
           resources:
             limits:
               memory: 512Mi
-          {{ if eq .Values.clusterType "kubernetes" }}
+          {{ if eq .Values.mongodb.securityContext.enabled true }}
           securityContext:
             runAsNonRoot: {{ .Values.mongodb.securityContext.runAsNonRoot }}
             runAsUser: {{ .Values.mongodb.securityContext.runAsUser }}

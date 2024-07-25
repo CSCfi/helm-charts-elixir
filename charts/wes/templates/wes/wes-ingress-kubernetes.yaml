@@ -1,4 +1,4 @@
-{{ if eq .Values.clusterType "kubernetes" }}
+{{ if not (.Capabilities.APIVersions.Has "route.openshift.io/v1") }}
 {{ if .Values.ingress.letsencryptSystem }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -23,7 +23,7 @@ spec: {{ if .Values.tlsSecret }}
             backend:
               service:
                 name: {{ .Values.wes.appName }}
-                port: 
+                port:
                   number: 8080
 {{ else }}
 apiVersion: networking.k8s.io/v1
