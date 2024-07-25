@@ -33,7 +33,7 @@ wes:
   #  Password: defaultnetrcpassword
   storageClass: nfs-client  # <- wes-volume.yaml, only for K8S, a storageClass with readWriteMany capability is required
   volumeSize: 1Gi
-  redirect: false
+  redirect: true
   configWithJob: true
   appConfig: |
     # General server/service settings
