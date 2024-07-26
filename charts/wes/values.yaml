@@ -166,7 +166,7 @@ mongodb:
   pullPolicy: Always
   innitVolumePermisions: false
   securityContext:  # only for K8S
-    enabled: true
+    enabled: false
     fsGroup: 1001
     runAsUser: 1001
     runAsNonRoot: true

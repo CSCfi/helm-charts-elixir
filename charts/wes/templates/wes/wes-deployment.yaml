@@ -96,10 +96,9 @@ spec:
       - name: wes-volume
         persistentVolumeClaim:
           claimName: {{ .Values.wes.appName }}-volume
-
       - name: wes-netrc-secret
         secret:
-          secretName: netrc
+          secretName: netrc-{{ .Values.wes.appName }}
           items:
           - key: netrc
             path: .netrc

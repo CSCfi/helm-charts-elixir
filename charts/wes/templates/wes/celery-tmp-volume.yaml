@@ -4,11 +4,10 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: celery-tmp-volume
-  annotations:
-    volume.beta.kubernetes.io/storage-class: {{ .Values.wes.storageClass }}
 spec:
   accessModes:
     - ReadWriteMany
+  storageClassName:  {{ .Values.wes.storageClass }}
   resources:
     requests:
       storage: {{ .Values.celeryWorker.tmpVolumeSize }}

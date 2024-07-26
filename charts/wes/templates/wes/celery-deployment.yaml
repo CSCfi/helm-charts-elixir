@@ -84,7 +84,7 @@ spec:
       {{ end }}
       - name: wes-netrc-secret
         secret:
-          secretName: netrc
+          secretName: netrc-{{ .Values.wes.appName }}
           items:
           - key: netrc
             path: .netrc
