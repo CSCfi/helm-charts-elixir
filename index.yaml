@@ -91,6 +91,16 @@ entries:
     version: 0.1.0
   cwlwes:
   - apiVersion: v2
+    created: "2024-07-26T06:08:00.992689958Z"
+    description: A cwl-WES Helm chart for Kubernetes
+    digest: 58ea7e843d261cd9fb284bc092e0acfb9d4df2fd73fdaf82df91bd0868cd26b2
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: cwlwes
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/cwlwes-0.1.11/cwlwes-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
     created: "2024-07-25T11:35:15.272609292Z"
     description: A cwl-WES Helm chart for Kubernetes
     digest: ad6138bd9169dd930a28dc9f640bb98a9024e6f7494a8ebfd7a425afc31474e2
@@ -771,4 +781,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-25T11:35:15.272770416Z"
+generated: "2024-07-26T06:08:00.992874424Z"
