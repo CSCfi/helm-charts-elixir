@@ -6,6 +6,8 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.celeryWorker.appName }}-{{ .Values.wes.appName }}
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:

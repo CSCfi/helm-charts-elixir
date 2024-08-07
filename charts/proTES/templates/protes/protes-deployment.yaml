@@ -8,9 +8,6 @@ spec:
     matchLabels:
       app: {{ .Values.protes.appName }}
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
     type: Recreate
   template:
     metadata:

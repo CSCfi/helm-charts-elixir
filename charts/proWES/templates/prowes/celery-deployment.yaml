@@ -7,9 +7,6 @@ spec:
     matchLabels:
       app: {{ .Values.celeryWorker.appName }}-{{ .Values.prowes.appName }}
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
     type: Recreate
   template:
     metadata:
