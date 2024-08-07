@@ -4,7 +4,7 @@
 host_name: drs-filer-test.2.rahtiapp.fi
 
 drs_filer:
-  image: docker.io/lvarin/drs-filer:latest
+  image: docker.io/elixircloud/drs-filer:dev
   appName: drs-filer
 
 apiServer: kubernetes.default.svc:443 # address of k8s API server
