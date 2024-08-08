@@ -160,8 +160,11 @@
     "ingress": {
       "type": "object",
       "properties": {
-        "active": {
+        "rules": {
           "type": "boolean"
+        },
+        "ingressClassName": {
+          "type": "string"
         },
         "path": {
           "type": "string"
@@ -172,55 +175,23 @@
         "annotations": {
           "type": "object",
           "properties": {
-            "kubernetes.io/ingress.class": {
-              "type": "string"
-            },
             "kubernetes.io/tls-acme": {
-              "type": "string"
+              "type": "boolean"
             },
             "cert-manager.io/cluster-issuer": {
               "type": "string"
             }
           },
           "required": [
-            "kubernetes.io/ingress.class",
             "kubernetes.io/tls-acme",
             "cert-manager.io/cluster-issuer"
-          ]
-        },
-        "deploy_ingress": {
-          "type": "object",
-          "properties": {
-            "active": {
-              "type": "boolean"
-            },
-            "nginx_image": {
-              "type": "string"
-            },
-            "external_ip": {
-              "type": "string"
-            },
-            "node_port": {
-              "type": "integer"
-            },
-            "scope": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "active",
-            "nginx_image",
-            "external_ip",
-            "node_port",
-            "scope"
           ]
         }
       },
       "required": [
-        "active",
+        "rules",
         "path",
-        "annotations",
-        "deploy_ingress"
+        "annotations"
       ]
     }
   },
