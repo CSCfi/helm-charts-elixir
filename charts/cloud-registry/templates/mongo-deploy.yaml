@@ -10,9 +10,6 @@ spec:
     matchLabels:
       app: mongodb-{{ .Values.cloud_registry.appName }}
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
     type: Recreate
   template:
     metadata:
