@@ -59,7 +59,6 @@ See [`values.yaml`](values.yaml) for default values.
 | Key | Type | Description |
 | --- | --- | --- |
 | host_name | string | FQDN to expose the application |
-| clusterType | string |type of Kubernetes cluster; either 'kubernetes' or 'openshift'|
 | storageClass | string | Name of a user preferred storage class (default is empty) |
 | storage | string | Can be either 'openstack' or 's3' |
 | tesk.image | string | container image (including the version) to be used to run TESK API |
