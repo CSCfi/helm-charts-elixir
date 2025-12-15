@@ -2,10 +2,10 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ .Values.rabbitmq.appName }}-volume-{{ .Values.prowes.appName }}
+  name: {{ .Values.rabbitmq.appName }}-volume
 spec:
   accessModes:
-    - ReadWriteMany
+    - {{ .Values.storageAccessMode }}
   resources:
     requests:
       storage: {{ .Values.rabbitmq.volumeSize }}

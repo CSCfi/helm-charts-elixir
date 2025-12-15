@@ -2,7 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-applicationDomain: 2.rahtiapp.fi  # change to wes server
+applicationDomain: ""  # change to wes server
+clusterType: ""  # either 'kubernetes' or 'openshift'
 tlsSecret: mytls-secret  # put name of tlsSecret
 storageAccessMode: ReadWriteOnce  # mongodb-pvc.yaml/rabbitmq-pvc.yaml, change to ReadWriteMany if storageClass can do RWX
 
@@ -13,7 +14,7 @@ extra_config:
 autocert:
   createJob: "false"  # actually create autocert cronjob, for K8S with autocert installed set to "false"
   schedule: "0 0 1 */2 *"  # cronjob schedule
-  testCert: true  # use test certificates so as not to exceed quota
+  testCert: "true"  # use test certificates so as not to exceed quota
   image: elixircloud/autocert:devel
   apiServer: kubernetes.default.svc:443  # address of k8s API server
   email: cert.author@cert.author.host.org  # email to inject into certificate
@@ -24,16 +25,31 @@ flower:
   image: endocode/flower
 
 wes:
-  appName: cwlwes
-  image: elixircloud/cwl-wes:latest
-  #netrc: # change this, add one entry per FTP/HTTP server
-  #- Machine: defaultmachine
-  #  Login: defaultnetrclogin
-  #  Password: defaultnetrcpassword
-  storageClass: standard-csi  # <- wes-volume.yaml, only for K8S, a storageClass with readWriteMany capability is required
+  appName: csc-wes
+  image: elixircloud/cwl-wes:20250305
+  initResources:
+    limits:
+      memory: 16Mi
+      cpu: 50m
+    requests:
+      memory: 16Mi
+      cpu: 50m
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  # netrc: # change this, add one entry per FTP/HTTP server
+  # - Machine: defaultmachine
+  #   Login: defaultnetrclogin
+  #   Password: defaultnetrcpassword
+  storageClass: nfs-client  # <- wes-volume.yaml, only for K8S, a storageClass with readWriteMany capability is required
   volumeSize: 1Gi
-  redirect: true
-  configWithJob: true
+  # Activate/deactivate the '/' to '/ga4gh/wes/v1/ui/' redirection
+  redirect: false
+  configWithJob: false
   appConfig: |
     # General server/service settings
     #
@@ -87,8 +103,8 @@ wes:
         broker_port: 5672
         result_backend: 'rpc://'
         include:
-            - cwl_wes.tasks.tasks.run_workflow
-            - cwl_wes.tasks.tasks.cancel_run
+            - cwl_wes.tasks.run_workflow
+            - cwl_wes.tasks.cancel_run
         monitor:
             timeout: 0.1
         message_maxsize: 16777216
@@ -129,7 +145,6 @@ wes:
               default_value: '5'
         tags:
             known_tes_endpoints: 'https://tes.tsi.ebi.ac.uk/|https://tes-dev.tsi.ebi.ac.uk/|https://csc-tesk.c03.k8s-popup.csc.fi/|https://tesk.c01.k8s-popup.csc.fi/'
-            app_version: 0.15.0
 
     # TES server
     tes:
@@ -146,27 +161,48 @@ wes:
             - cwl
             - yaml
             - yml
-  # Activate/deactivate the '/' to '/ga4gh/wes/v1/ui/' redirection
 
 celeryWorker:
   appName: celery-worker
   image: elixircloud/cwl-wes:latest
+  initResources:
+    limits:
+      memory: 16Mi
+      cpu: 50m
+    requests:
+      memory: 16Mi
+      cpu: 50m
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
   tmpVolumeSize: 0Gi # Volume size for the /tmp directory. Leave 0 to not deploy. StorageClass with readWriteMany capability is required
   tmpCleaner: false # If tmpVolume is deployed, then it should be cleaned hourly.
 
 mongodb:
   appName: mongodb
-  databaseAdminPassword: adminpasswd
-  databaseName: cwlwes-db
-  databasePassword: cwlwes-db-passwd
-  databaseUser: cwlwes-user
+  secret:
+    databaseRootUsername: ""
+    databaseRootPassword: ""
+    databaseUser: ""
+    databasePassword: ""
+    databaseName: ""
   volumeSize: 1Gi
-  image: centos/mongodb-36-centos7
-  mountPath: /var/lib/mongodb/data
+  image: docker.io/library/mongo:noble
+  resources:
+    limits:
+      cpu: 200m
+      memory: 512Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+  mountPath: /data/db
   pullPolicy: Always
-  innitVolumePermisions: false
   securityContext:  # only for K8S
-    enabled: false
+    enabled: true
     fsGroup: 1001
     runAsUser: 1001
     runAsNonRoot: true
@@ -174,13 +210,20 @@ mongodb:
 rabbitmq:
   appName: rabbitmq
   volumeSize: 1Gi
-  image: rabbitmq:3-management
+  image: rabbitmq:4.1.4-management
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 200m
+      memory: 256Mi
 
 ingress: # <- wes-ingress-kubernetes.yaml, only for system ingress for K8S, ensure wes namespace has rights to access it
-  letsencryptSystem: true  # if true, ensure wes namespace has rights to access letsencrypt pods - rbac
+  letsencryptSystem: "true"  # if true, ensure wes namespace has rights to access letsencrypt pods - rbac
   nginx_image: nginx/nginx-ingress:1.3.0
   tls_letsencrypt:
     annotations:
       ingressclass: "nginx"
-      tlsacme: true
+      tlsacme: "\"true\""
       clusterissuer: "letsencrypt-prod"

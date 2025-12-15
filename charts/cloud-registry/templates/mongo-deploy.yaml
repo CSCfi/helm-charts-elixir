@@ -1,45 +1,50 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb-{{ .Values.cloud_registry.appName }}
+  name: mongodb
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: mongodb-{{ .Values.cloud_registry.appName }}
+      app: mongodb
   strategy:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-    type: Recreate
+    type: RollingUpdate
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: mongodb-{{ .Values.cloud_registry.appName }}
+        app: mongodb
     spec:
       containers:
       - image: {{ .Values.mongodb.image }}
         imagePullPolicy: Always
-        name: mongodb-{{ .Values.cloud_registry.appName }}
+        name: mongodb
         ports:
         - containerPort: 27017
           protocol: TCP
-        resources: {}
+        resources: {{- toYaml .Values.mongodb.resources | nindent 10 }}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /data/db/
-          name: mongodb-{{ .Values.cloud_registry.appName }}
+          name: mongodb
+        - name: init-script
+          mountPath: /docker-entrypoint-initdb.d/init-script.js
+          subPath: init-script.js
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: mongodb-{{ .Values.cloud_registry.appName }}
+      - name: mongodb
         persistentVolumeClaim:
-          claimName: mongodb-{{ .Values.cloud_registry.appName }}
-status:
+          claimName: mongodb
+      - name: init-script
+        configMap:
+          name: mongo-init-script

@@ -1,8 +1,8 @@
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
+{{- if eq .Values.clusterType "openshift" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 {{- else }}
-apiVersion: networkking.k8s.io/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 {{ end }}
 metadata:
@@ -10,7 +10,7 @@ metadata:
     app: {{ .Values.protes.appName }}
   name: {{ .Values.protes.appName }}
 spec:
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
+{{- if eq .Values.clusterType "openshift" }}
   host: {{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
   path: "/ga4gh/tes/v1"
   port:

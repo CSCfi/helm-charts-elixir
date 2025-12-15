@@ -24,6 +24,6 @@ spec:
         backend:
           service:
             name: tesk-api
-            port: 
+            port:
               number: {{ .Values.tesk.port }}
 {{ end }}

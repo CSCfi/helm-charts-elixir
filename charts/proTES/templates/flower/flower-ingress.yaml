@@ -1,24 +1,24 @@
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
+{{- if eq .Values.clusterType "openshift" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 {{- else }}
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 {{ end }}
 metadata:
   labels:
-    app: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
-  name: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
+    app: {{ .Values.flower.appName }}
+  name: {{ .Values.flower.appName }}
 spec:
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
-  host: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
+{{- if eq .Values.clusterType "openshift" }}
+  host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
   port:
     targetPort: 5555
   tls:
     termination: edge
   to:
     kind: Service
-    name: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
+    name: {{ .Values.flower.appName }}
     weight: 100
   wildcardPolicy: None
 status:
@@ -26,13 +26,13 @@ status:
 {{- else }}
   tls:
   - hosts:
-      - {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
+      - {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
   rules:
-  - host: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}.{{ .Values.applicationDomain }}
+  - host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
     http:
       paths:
       - path: "/"
         backend:
-          serviceName: {{ .Values.flower.appName }}-{{ .Values.protes.appName }}
+          serviceName: {{ .Values.flower.appName }}
           servicePort: 5555
 {{ end }}
