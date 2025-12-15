@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb-{{ .Values.drs_filer.appName }}
+  name: mongodb
 spec:
   accessModes:
   - ReadWriteOnce

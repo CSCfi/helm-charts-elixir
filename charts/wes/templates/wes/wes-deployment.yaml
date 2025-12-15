@@ -7,13 +7,12 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.wes.appName }}
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: {{ .Values.wes.appName }}
     spec:
+      {{- if eq .Values.storageAccessMode "ReadWriteOnce" }}
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -22,13 +21,15 @@ spec:
               - key: app
                 operator: In
                 values:
-                - celery-worker-{{ .Values.wes.appName }}
+                - {{ .Values.celeryWorker.appName }}
             topologyKey: "kubernetes.io/hostname"
+      {{- end }}
       initContainers:
       - name: vol-init
         image: busybox
         command: [ 'mkdir' ]
         args: [ '-p', '/data/db', '/data/output', '/data/tmp' ]
+        resources: {{- toYaml .Values.wes.initResources | nindent 10 }}
         volumeMounts:
         - mountPath: /data
           name: wes-volume
@@ -43,26 +44,26 @@ spec:
         - name: WES_CONFIG
           value: {{ .Values.extra_config.folder }}/{{ .Values.extra_config.file }}
         - name: MONGO_HOST
-          value: {{ .Values.mongodb.appName }}-{{ .Values.wes.appName }}
+          value: {{ .Values.mongodb.appName }}
         - name: MONGO_PORT
           value: "27017"
         - name: MONGO_USERNAME
           valueFrom:
             secretKeyRef:
-              key: database-user
-              name: {{ .Values.mongodb.appName }}-{{ .Values.wes.appName }}
+              key: databaseUser
+              name: {{ .Values.mongodb.appName }}
         - name: MONGO_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-password
-              name: {{ .Values.mongodb.appName }}-{{ .Values.wes.appName }}
+              key: databasePassword
+              name: {{ .Values.mongodb.appName }}
         - name: MONGO_DBNAME
           valueFrom:
             secretKeyRef:
-              key: database-name
-              name: {{ .Values.mongodb.appName }}-{{ .Values.wes.appName }}
+              key: databaseName
+              name: {{ .Values.mongodb.appName }}
         - name: RABBIT_HOST
-          value: {{ .Values.rabbitmq.appName }}-{{ .Values.wes.appName }}
+          value: {{ .Values.rabbitmq.appName }}
         - name: RABBIT_PORT
           value: "5672"
         livenessProbe:
@@ -76,13 +77,7 @@ spec:
             port: wes-port
           initialDelaySeconds: 3
           periodSeconds: 3
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "500m"
-          limits:
-            memory: "5Gi"
-            cpu: "1"
+        resources: {{- toYaml .Values.wes.resources | nindent 10 }}
         ports:
         - containerPort: 8080
           name: wes-port
@@ -93,19 +88,20 @@ spec:
           subPath: .netrc
           name: wes-netrc-secret
         - mountPath: {{ .Values.extra_config.folder}}
-          name: app-config-{{ .Values.wes.appName }}
+          name: app-config
       volumes:
       - name: wes-volume
         persistentVolumeClaim:
           claimName: {{ .Values.wes.appName }}-volume
+
       - name: wes-netrc-secret
         secret:
-          secretName: netrc-{{ .Values.wes.appName }}
+          secretName: netrc
           items:
           - key: netrc
             path: .netrc
       - configMap:
           defaultMode: 420
-          name: app-config-{{ .Values.wes.appName }}
-        name: app-config-{{ .Values.wes.appName }}
+          name: app-config
+        name: app-config
 

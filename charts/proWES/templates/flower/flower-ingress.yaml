@@ -1,4 +1,4 @@
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
+{{- if eq .Values.clusterType "openshift" }}
 apiVersion: route.openshift.io/v1
 kind: Route
 {{- else }}
@@ -7,18 +7,18 @@ kind: Ingress
 {{ end }}
 metadata:
   labels:
-    app: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
-  name: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
+    app: {{ .Values.flower.appName }}
+  name: {{ .Values.flower.appName }}
 spec:
-{{- if .Capabilities.APIVersions.Has "route.openshift.io/v1" }}
-  host: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}.{{ .Values.applicationDomain }}
+{{- if eq .Values.clusterType "openshift" }}
+  host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
   port:
     targetPort: 5555
   tls:
     termination: edge
   to:
     kind: Service
-    name: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
+    name: {{ .Values.flower.appName }}
     weight: 100
   wildcardPolicy: None
 status:
@@ -26,16 +26,16 @@ status:
 {{- else }}
   tls:
   - hosts:
-      - {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}.{{ .Values.applicationDomain }}
+      - {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
   rules:
-  - host: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}.{{ .Values.applicationDomain }}
+  - host: {{ .Values.flower.appName }}.{{ .Values.applicationDomain }}
     http:
       paths:
       - path: /
         pathType: Exact
         backend:
           service:
-            name: {{ .Values.flower.appName }}-{{ .Values.prowes.appName }}
+            name: {{ .Values.flower.appName }}
             port:
               number: 5555
 {{ end }}

@@ -1,7 +1,9 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
     "properties": {
         "auth": {
+            "type": "object",
             "properties": {
                 "env_basegroup": {
                     "type": "string"
@@ -12,10 +14,10 @@
                 "mode": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         },
         "ftp": {
+            "type": "object",
             "properties": {
                 "classic_ftp_secret": {
                     "type": "string"
@@ -26,15 +28,16 @@
                 "netrc_secret": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         },
         "host_name": {
             "type": "string"
         },
         "ingress": {
+            "type": "object",
             "properties": {
                 "annotations": {
+                    "type": "object",
                     "properties": {
                         "cert-manager.io/cluster-issuer": {
                             "type": "string"
@@ -42,8 +45,7 @@
                         "kubernetes.io/tls-acme": {
                             "type": "boolean"
                         }
-                    },
-                    "type": "object"
+                    }
                 },
                 "ingressClassName": {
                     "type": "string"
@@ -57,19 +59,18 @@
                 "tls_secret_name": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         },
         "service": {
+            "type": "object",
             "properties": {
                 "node_port": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "type": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         },
         "storage": {
             "type": "string"
@@ -78,61 +79,62 @@
             "type": "string"
         },
         "tesk": {
+            "type": "object",
             "properties": {
                 "debug": {
                     "type": "boolean"
                 },
                 "executor_retries": {
-                    "type": "integer"
+                    "type": ["integer","string"]
                 },
                 "filer_retries": {
-                    "type": "integer"
+                    "type": ["integer","string"]
                 },
                 "image": {
                     "type": "string"
                 },
                 "limitsCpu": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "limitsMemory": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "port": {
-                    "type": "integer"
+                    "type": ["integer","integer"]
                 },
                 "requestsCpu": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "requestsMemory": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "securityContext": {
+                    "type": "object",
                     "properties": {
                         "enabled": {
                             "type": "boolean"
                         }
-                    },
-                    "type": "object"
+                    }
                 },
                 "taskmaster_filer_image_name": {
                     "type": "string"
                 },
                 "taskmaster_filer_image_version": {
-                    "type": "string"
+                    "type": ["integer","string"]
                 },
                 "taskmaster_image_name": {
                     "type": "string"
                 },
                 "taskmaster_image_version": {
-                    "type": "string"
+                    "type":  ["integer","string"]
                 },
                 "tes_api_base_path": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         },
         "transfer": {
+            "type": "object",
             "properties": {
                 "active": {
                     "type": "boolean"
@@ -146,19 +148,7 @@
                 "wes_base_path": {
                     "type": "string"
                 }
-            },
-            "type": "object"
+            }
         }
-    },
-    "required": [
-        "host_name",
-        "storage",
-        "tesk",
-        "transfer",
-        "auth",
-        "service",
-        "ftp",
-        "ingress"
-      ],
-    "type": "object"
+    }
 }

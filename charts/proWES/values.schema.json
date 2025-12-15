@@ -1,124 +1,288 @@
-
-
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "applicationDomain": {
-      "type": "string"
-    },
-    "flower": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "applicationDomain": {
+            "type": "string"
         },
-        "basicAuth": {
-          "type": "string"
+        "celeryWorker": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "initResources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
-        "image": {
-          "type": "string"
+        "clusterType": {
+            "type": "string"
+        },
+        "flower": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "basicAuth": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "mongodb": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "secret": {
+                    "type": "object",
+                    "properties": {
+                        "databaseName": {
+                            "type": "string"
+                        },
+                        "databasePassword": {
+                            "type": "string"
+                        },
+                        "databaseRootPassword": {
+                            "type": "string"
+                        },
+                        "databaseRootUsername": {
+                            "type": "string"
+                        },
+                        "databaseUser": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "string"
+                }
+            }
+        },
+        "prowes": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "initResources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "rabbitmq": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "string"
+                }
+            }
+        },
+        "storageAccessMode": {
+            "type": "string"
         }
-      },
-      "required": [
-        "appName",
-        "basicAuth",
-        "image"
-      ]
-    },
-    "prowes": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "image"
-      ]
-    },
-    "celeryWorker": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "image"
-      ]
-    },
-    "mongodb": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "databaseAdminPassword": {
-          "type": "string"
-        },
-        "databaseName": {
-          "type": "string"
-        },
-        "databasePassword": {
-          "type": "string"
-        },
-        "databaseUser": {
-          "type": "string"
-        },
-        "volumeSize": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "databaseAdminPassword",
-        "databaseName",
-        "databasePassword",
-        "databaseUser",
-        "volumeSize",
-        "image"
-      ]
-    },
-    "rabbitmq": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "volumeSize": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "volumeSize",
-        "image"
-      ]
     }
-  },
-  "required": [
-    "applicationDomain",
-    "flower",
-    "prowes",
-    "celeryWorker",
-    "mongodb",
-    "rabbitmq"
-  ]
 }
-
-

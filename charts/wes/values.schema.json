@@ -1,281 +1,372 @@
 {
-  "$schema": "http://json-schema.org/schema#",
-  "type": "object",
-  "properties": {
-    "applicationDomain": {
-      "type": "string"
-    },
-    "tlsSecret": {
-      "type": "string"
-    },
-    "storageAccessMode": {
-      "type": "string"
-    },
-    "extra_config": {
-      "type": "object",
-      "properties": {
-        "folder": {
-          "type": "string"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+        "applicationDomain": {
+            "type": "string"
         },
-        "file": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "file",
-        "folder"
-      ]
-    },
-    "autocert": {
-      "type": "object",
-      "properties": {
-        "createJob": {
-          "type": "string"
-        },
-        "schedule": {
-          "type": "string"
-        },
-        "testCert": {
-          "type": "boolean"
-        },
-        "image": {
-          "type": "string"
-        },
-        "apiServer": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "apiServer",
-        "createJob",
-        "email",
-        "image",
-        "schedule",
-        "testCert"
-      ]
-    },
-    "flower": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "basicAuth": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "basicAuth",
-        "image"
-      ]
-    },
-    "wes": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        },
-        "storageClass": {
-          "type": "string"
-        },
-        "volumeSize": {
-          "type": "string"
-        },
-        "redirect": {
-          "type": "boolean",
-          "default": true
-        },
-        "configWithJob": {
-          "type": "boolean"
-        },
-        "appConfig": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appConfig",
-        "appName",
-        "configWithJob",
-        "image",
-        "redirect",
-        "storageClass",
-        "volumeSize"
-      ]
-    },
-    "celeryWorker": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        },
-        "tmpVolumeSize": {
-          "type": "string"
-        },
-        "tmpCleaner": {
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "appName",
-        "image",
-        "tmpCleaner",
-        "tmpVolumeSize"
-      ]
-    },
-    "mongodb": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "databaseAdminPassword": {
-          "type": "string"
-        },
-        "databaseName": {
-          "type": "string"
-        },
-        "databasePassword": {
-          "type": "string"
-        },
-        "databaseUser": {
-          "type": "string"
-        },
-        "volumeSize": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        },
-        "mountPath": {
-          "type": "string"
-        },
-        "pullPolicy": {
-          "type": "string"
-        },
-        "securityContext": {
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "type": "boolean"
-            },
-            "fsGroup": {
-              "type": "integer"
-            },
-            "runAsUser": {
-              "type": "integer"
-            },
-            "runAsNonRoot": {
-              "type": "boolean"
-            }
-          },
-          "required": [
-            "enabled",
-            "fsGroup",
-            "runAsNonRoot",
-            "runAsUser"
-          ]
-        }
-      },
-      "required": [
-        "appName",
-        "databaseAdminPassword",
-        "databaseName",
-        "databasePassword",
-        "databaseUser",
-        "image",
-        "mountPath",
-        "pullPolicy",
-        "securityContext",
-        "volumeSize"
-      ]
-    },
-    "rabbitmq": {
-      "type": "object",
-      "properties": {
-        "appName": {
-          "type": "string"
-        },
-        "volumeSize": {
-          "type": "string"
-        },
-        "image": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "appName",
-        "image",
-        "volumeSize"
-      ]
-    },
-    "ingress": {
-      "type": "object",
-      "properties": {
-        "letsencryptSystem": {
-          "type": "boolean"
-        },
-        "nginx_image": {
-          "type": "string"
-        },
-        "tls_letsencrypt": {
-          "type": "object",
-          "properties": {
-            "annotations": {
-              "type": "object",
-              "properties": {
-                "ingressclass": {
-                  "type": "string"
+        "autocert": {
+            "type": "object",
+            "properties": {
+                "apiServer": {
+                    "type": "string"
                 },
-                "tlsacme": {
-                  "type": "boolean"
+                "createJob": {
+                    "type": "string"
                 },
-                "clusterissuer": {
-                  "type": "string"
+                "email": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string"
+                },
+                "testCert": {
+                    "type": "string"
                 }
-              },
-              "required": [
-                "clusterissuer",
-                "ingressclass",
-                "tlsacme"
-              ]
             }
-          },
-          "required": [
-            "annotations"
-          ]
+        },
+        "celeryWorker": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "initResources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tmpCleaner": {
+                    "type": "boolean"
+                },
+                "tmpVolumeSize": {
+                    "type": "string"
+                }
+            }
+        },
+        "clusterType": {
+            "type": "string"
+        },
+        "extra_config": {
+            "type": "object",
+            "properties": {
+                "file": {
+                    "type": "string"
+                },
+                "folder": {
+                    "type": "string"
+                }
+            }
+        },
+        "flower": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "basicAuth": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                }
+            }
+        },
+        "ingress": {
+            "type": "object",
+            "properties": {
+                "letsencryptSystem": {
+                    "type": "string"
+                },
+                "nginx_image": {
+                    "type": "string"
+                },
+                "tls_letsencrypt": {
+                    "type": "object",
+                    "properties": {
+                        "annotations": {
+                            "type": "object",
+                            "properties": {
+                                "clusterissuer": {
+                                    "type": "string"
+                                },
+                                "ingressclass": {
+                                    "type": "string"
+                                },
+                                "tlsacme": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "mongodb": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "mountPath": {
+                    "type": "string"
+                },
+                "pullPolicy": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "secret": {
+                    "type": "object",
+                    "properties": {
+                        "databaseName": {
+                            "type": "string"
+                        },
+                        "databasePassword": {
+                            "type": "string"
+                        },
+                        "databaseRootPassword": {
+                            "type": "string"
+                        },
+                        "databaseRootUsername": {
+                            "type": "string"
+                        },
+                        "databaseUser": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "securityContext": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "fsGroup": {
+                            "type": "integer"
+                        },
+                        "runAsNonRoot": {
+                            "type": "boolean"
+                        },
+                        "runAsUser": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "string"
+                }
+            }
+        },
+        "rabbitmq": {
+            "type": "object",
+            "properties": {
+                "appName": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "volumeSize": {
+                    "type": "string"
+                }
+            }
+        },
+        "storageAccessMode": {
+            "type": "string"
+        },
+        "tlsSecret": {
+            "type": "string"
+        },
+        "wes": {
+            "type": "object",
+            "properties": {
+                "appConfig": {
+                    "type": "string"
+                },
+                "appName": {
+                    "type": "string"
+                },
+                "configWithJob": {
+                    "type": "boolean"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "initResources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "redirect": {
+                    "type": "boolean"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": ["integer","string"]
+                                },
+                                "memory": {
+                                    "type": ["integer","string"]
+                                }
+                            }
+                        }
+                    }
+                },
+                "storageClass": {
+                    "type": "string"
+                },
+                "volumeSize": {
+                    "type": "string"
+                }
+            }
         }
-      },
-      "required": [
-        "letsencryptSystem",
-        "nginx_image",
-        "tls_letsencrypt"
-      ]
     }
-  },
-  "required": [
-    "applicationDomain",
-    "autocert",
-    "celeryWorker",
-    "extra_config",
-    "flower",
-    "ingress",
-    "mongodb",
-    "rabbitmq",
-    "storageAccessMode",
-    "tlsSecret",
-    "wes"
-  ]
 }

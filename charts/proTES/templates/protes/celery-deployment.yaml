@@ -1,28 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.celeryWorker.appName }}-{{ .Values.protes.appName }}
+  name: {{ .Values.celeryWorker.appName }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.celeryWorker.appName }}-{{ .Values.protes.appName }}
-  strategy:
-    type: Recreate
+      app: {{ .Values.celeryWorker.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.celeryWorker.appName }}-{{ .Values.protes.appName }}
+        app: {{ .Values.celeryWorker.appName }}
     spec:
       initContainers:
       - name: vol-init
         image: busybox
         command: [ 'mkdir' ]
         args: [ '-p', '/data/db', '/data/output', '/data/tmp' ]
+        resources: {{- toYaml .Values.celeryWorker.initResources | nindent 10 }}
         volumeMounts:
         - mountPath: /data
           name: protes-volume
       containers:
-      - name: celery-worker-{{ .Values.protes.appName }}
+      - name: celery-worker
         image: {{ .Values.celeryWorker.image }}
         imagePullPolicy: Always
         workingDir: '/app/pro_tes'
@@ -30,37 +29,29 @@ spec:
         args: [ '-A', 'celery_worker', 'worker', '-E', '--loglevel=info', '-c', '1', '-Q', 'celery' ]
         env:
         - name: MONGO_HOST
-          value: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
+          value: {{ .Values.mongodb.appName }}
         - name: MONGO_PORT
           value: "27017"
         - name: MONGO_USERNAME
           valueFrom:
             secretKeyRef:
-              key: database-user
-              name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
+              key: databaseUser
+              name: {{ .Values.mongodb.appName }}
         - name: MONGO_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: database-password
-              name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
-
+              key: databasePassword
+              name: {{ .Values.mongodb.appName }}
         - name: MONGO_DBNAME
           valueFrom:
             secretKeyRef:
-              key: database-name
-              name: {{ .Values.mongodb.appName }}-{{ .Values.protes.appName }}
-
+              key: databaseName
+              name: {{ .Values.mongodb.appName }}
         - name: RABBIT_HOST
-          value: {{ .Values.rabbitmq.appName }}-{{ .Values.protes.appName }}
+          value: {{ .Values.rabbitmq.appName }}
         - name: RABBIT_PORT
           value: "5672"
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "300m"
-          limits:
-            memory: "8Gi"
-            cpu: "1"
+        resources: {{- toYaml .Values.celeryWorker.resources | nindent 10 }}
         volumeMounts:
         - mountPath: /data
           name: protes-volume
