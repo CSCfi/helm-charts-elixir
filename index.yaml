@@ -212,6 +212,17 @@ entries:
     version: 0.1.0
   drs-filer:
   - apiVersion: v2
+    appVersion: 2.0.1
+    created: "2025-12-17T14:14:59.531246913Z"
+    description: A Helm chart for deploying a DRS (Data Repository Service) filer
+      on Kubernetes, facilitating efficient data storage and retrieval.
+    digest: 9181eb56f15443b15475beb003b99bb2dbff4a1d6188a315521e83e54f5a0920
+    name: drs-filer
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/drs-filer-2.0.1/drs-filer-2.0.1.tgz
+    version: 2.0.1
+  - apiVersion: v2
     appVersion: 2.0.0
     created: "2025-12-15T13:55:43.119532478Z"
     description: A Helm chart for deploying a DRS (Data Repository Service) filer
@@ -643,6 +654,19 @@ entries:
   tesk:
   - apiVersion: v2
     appVersion: dev
+    created: "2025-12-17T14:14:59.714994403Z"
+    description: A TESK-EXILIR Helm chart for Kubernetes
+    digest: 592b7dd6d2b6232864cd7333b176f45432728fb02920ac9f43013e76d14d3e39
+    icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
+    name: tesk
+    sources:
+    - https://github.com/elixir-cloud-aai/TESK/
+    type: application
+    urls:
+    - https://github.com/CSCfi/helm-charts-elixir/releases/download/tesk-0.1.9/tesk-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: dev
     created: "2024-08-16T10:37:15.871087748Z"
     description: A TESK-EXILIR Helm chart for Kubernetes
     digest: 7c7b2d510a79d41d5e57faba1ad61a1712fc344e0d9b4aae32bca4d99fe89dae
@@ -869,4 +893,4 @@ entries:
     urls:
     - https://github.com/CSCfi/helm-charts-elixir/releases/download/trs-filer-0.1.0/trs-filer-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-15T13:55:43.783864545Z"
+generated: "2025-12-17T14:14:59.715213102Z"
