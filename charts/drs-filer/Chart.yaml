@@ -1,6 +1,7 @@
 apiVersion: v2
 name: drs-filer
 description: A Helm chart for deploying a DRS (Data Repository Service) filer on Kubernetes, facilitating efficient data storage and retrieval.
+icon: https://avatars.githubusercontent.com/u/60704687?s=48&v=4
 type: application
 version: 2.0.1
 appVersion: 2.0.1
