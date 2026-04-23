@@ -6,7 +6,7 @@ applicationDomain: ""
 
 # which cluster type proWES is going to be deployed on
 # it can be either 'kubernetes' or 'openshift'
-clusterType: kubernetes
+clusterType: openshift
 
 # mongodb-pvc.yaml/rabbitmq-pvc.yaml, change to ReadWriteMany if storageClass can do RWX
 storageAccessMode: ReadWriteOnce
@@ -24,7 +24,7 @@ flower:
       memory: 500Mi
 prowes:
   appName: prowes
-  image: elixircloud/prowes:latest
+  image: elixircloud/prowes:20260109
   initResources:
     limits:
       memory: 16Mi
@@ -79,7 +79,7 @@ mongodb:
 rabbitmq:
   appName: rabbitmq
   volumeSize: 1Gi
-  image: rabbitmq:4.1.4-management
+  image: rabbitmq:4.2.5-management
   resources:
     limits:
       cpu: 200m

@@ -14,6 +14,15 @@ spec:
       labels:
         app: {{ .Values.rabbitmq.appName }}
     spec:
+      {{- if eq .Values.clusterType "openshift" }}
+      initContainers:
+        - name: init-permissions
+          image: busybox
+          command: ["sh", "-c", "chmod 600 /var/lib/rabbitmq/.erlang.cookie || true; chown $(id -u):$(id -g) /var/lib/rabbitmq/.erlang.cookie || true"]
+          volumeMounts:
+            - name: rabbitmq-volume
+              mountPath: /var/lib/rabbitmq
+      {{- end }}
       containers:
       - name: rabbitmq
         image: {{ .Values.rabbitmq.image }}

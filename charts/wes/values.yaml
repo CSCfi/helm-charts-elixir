@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 applicationDomain: ""  # change to wes server
-clusterType: ""  # either 'kubernetes' or 'openshift'
+clusterType: "openshift"  # either 'kubernetes' or 'openshift'
 tlsSecret: mytls-secret  # put name of tlsSecret
 storageAccessMode: ReadWriteOnce  # mongodb-pvc.yaml/rabbitmq-pvc.yaml, change to ReadWriteMany if storageClass can do RWX
 
@@ -26,7 +26,7 @@ flower:
 
 wes:
   appName: csc-wes
-  image: elixircloud/cwl-wes:20250305
+  image: elixircloud/cwl-wes:20260119
   initResources:
     limits:
       memory: 16Mi
@@ -164,7 +164,7 @@ wes:
 
 celeryWorker:
   appName: celery-worker
-  image: elixircloud/cwl-wes:latest
+  image: elixircloud/cwl-wes:20260119
   initResources:
     limits:
       memory: 16Mi
@@ -202,7 +202,7 @@ mongodb:
   mountPath: /data/db
   pullPolicy: Always
   securityContext:  # only for K8S
-    enabled: true
+    enabled: false
     fsGroup: 1001
     runAsUser: 1001
     runAsNonRoot: true
@@ -210,7 +210,7 @@ mongodb:
 rabbitmq:
   appName: rabbitmq
   volumeSize: 1Gi
-  image: rabbitmq:4.1.4-management
+  image: rabbitmq:4.2.5-management
   resources:
     limits:
       cpu: 200m

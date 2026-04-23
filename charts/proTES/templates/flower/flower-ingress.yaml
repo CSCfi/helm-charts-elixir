@@ -21,8 +21,6 @@ spec:
     name: {{ .Values.flower.appName }}
     weight: 100
   wildcardPolicy: None
-status:
-  ingress: []
 {{- else }}
   tls:
   - hosts:
